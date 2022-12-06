@@ -13,7 +13,7 @@ export default function Settings(props){
        min="1" max="30" value={props.widthForPerfect} onChange={(e) => props.changeSettings('widthForPerfect', +e.target.value)}/> width on perfect
       </div>
       <div className='speed'>
-        Speed
+        Starting speed
         <button onClick={() => props.changeSettings("speed", 1)}> x1</button>
         <button onClick={() => props.changeSettings("speed", 2)}> x2</button>
         <button onClick={() => props.changeSettings("speed", 3)}> x3</button>

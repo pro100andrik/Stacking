@@ -98,27 +98,19 @@ class Game extends React.Component {
       const lastBlockRight = +this.state.bricks[this.state.bricks.length-1].props.styles.left[0].slice(0, this.state.bricks[this.state.bricks.length-1].props.styles.left[0].length - 2) + +this.state.bricks[this.state.bricks.length-1].props.styles.width.slice(0, this.state.bricks[this.state.bricks.length-1].props.styles.width.length - 2);
       const currentBlockRight = this.state.left + this.state.maxWidth
 
-      // GAIN SPEED
+      // ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++GAIN SPEED
       if (this.props.accelerate){
-        // console.log(this.state.bricks.length % this.props.accelerateCount === 0)
         if(this.state.bricks.length % this.props.accelerateCount === 0){
           const currentSpeed = this.state.speed;
           this.setState({
-            // speed: this.props.startSpeed + ((Math.floor(this.state.bricks.length / 10) * 2)/10)
             speed: +(currentSpeed + this.props.accelerateAmount).toFixed(1)
           })
         }
-        // this.setState({
-        //   speed: this.props.startSpeed + ((Math.floor(this.state.bricks.length / 10) * 2)/10)
-        // })
       }
       console.log('speed', this.state.speed, 'bricks', this.state.bricks.length)
-      // console.log(lastBlockLeft, lastBlockRight, currentBlockRight)
+      // ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++GAIN SPEED
 
-      // const startLeft = this.state.startInLeft;
-      // console.log(startLeft)
-
-      if (this.state.left < lastBlockLeft - (this.state.speed / 2)){  // BLOCK FALL TO LEFT  - this.state.speed / 2
+      if (this.state.left < lastBlockLeft - (this.state.speed / 2)){                 // BLOCK FALL TO LEFT
         if (this.state.left + this.state.maxWidth < lastBlockLeft){
           this.setGameOver();
           return
@@ -132,8 +124,7 @@ class Game extends React.Component {
           bricks: [...this.state.bricks, <Brick key={this.state.bricks.length} styles={new BrickStyles(nextBlockWidth, "" , `left: ${this.state.left + cutAmount}px`)}/>],
         })
         this.updateScore(1)
-      // } else if (this.state.left > lastBlockLeft) {
-      } else if (currentBlockRight > lastBlockRight + (this.state.speed / 2)){
+      } else if (currentBlockRight > lastBlockRight + (this.state.speed / 2)){      // BLOCK FALL TO RiGHT
         if (this.state.left > lastBlockLeft + this.state.maxWidth){
           this.setGameOver();
           return
@@ -147,7 +138,7 @@ class Game extends React.Component {
           bricks: [...this.state.bricks, <Brick key={this.state.bricks.length} styles={new BrickStyles(nextBlockWidth, "" , `left: ${this.state.left}px`)}/>],
         })
         this.updateScore(1)
-      } else { //if (this.state.left === lastBlockLeft) {
+      } else {                                                                      // PERFECT HIT
         console.log ("perfect");
         if(this.props.addWidthOnPerfect) {
           const nextBlockWidth = this.state.maxWidth + this.props.widthForPerfect;
@@ -235,15 +226,10 @@ function BrickStyles(width, color, ...args){
   this.position = 'relative';
   this.border = "1px solid black";
   this.marginBottom = "-1px"
-  // this.borderBottom = "0";
-
   for (let arg of args){
     const dividerPosition = arg.indexOf(':')
     this[arg.slice(0,dividerPosition)] = [arg.slice(dividerPosition + 2)]
   }
-
-  // console.log(args)
-
 }
 
 function randomColor(){

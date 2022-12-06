@@ -2,6 +2,7 @@ import React from 'react';
 
 import Game from './components/Game';
 import Settings from './components/Settings';
+import Background from './components/Background';
 
 import './App.css';
 
@@ -64,7 +65,6 @@ class App extends React.Component {
       this.setState ({
         widthForPerfect: +value,
       })
-      // console.log(type, +value)
     } else if (type === 'speed') {
       this.setState ({
         startSpeed: +value,
@@ -98,6 +98,7 @@ class App extends React.Component {
   render(){
     return(
       <div>
+        {/* <div><Background /></div> */} 
         <div className="title">Stacker Game </div>
         <div className="info-pannel">
           <div className="score">Score: {this.state.score} {this.state.amount === 0 ? null : "+" + this.state.amount}</div>
@@ -134,6 +135,9 @@ class App extends React.Component {
     )
   }
 }
+
+
+
 
 
 export default App;
