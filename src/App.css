@@ -1,0 +1,36 @@
+body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100vw;
+  height: 100vh;
+  margin: 0;
+}
+
+
+.title {
+  font-size: 300%;
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.info-pannel {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 15px;
+}
+
+.score {
+  flex-grow: 1;
+}
+
+.restart-button {
+  text-align: center;
+  flex-grow: 1;
+}
+
+.settings-button {
+  text-align: right;
+  flex-grow: 1;
+}
